@@ -1,0 +1,40 @@
+{% extends "safetyIndex.html"%}
+{%block title%}<title>SafetyWear Products</title>{%endblock%}
+{%block slider%}{%endblock%}
+{% block category%}
+  {% for category, values in category_name.items %}
+    <div class="relative dropdown">
+      <a href="/category/{{category}}" class="dropdown-toggle text-blue-500">{{ category }} Safety</a>
+      <div class="dropdown-content absolute">
+        {% for value in values %}
+          <a href="http://127.0.0.1:8000/safety/product/{{value}}" class="dropdown-item text-green-400 text-lg font-semibold">{{ value }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock%}
+{%block header%}<div><p class="text-2xl ml-24 z-60 my-4 px-2 "> {{name}} Safety</p></div>{%endblock%}
+{% block products%}
+{{url}}
+<div class="grid grid-cols-4 gap-1 mb-5 pt-5 mx-1 bg-gray-100 items-center justify-center flex-col" id="parents">
+  {% if lens <= 0 %}
+    <div  class="text-2xl bg-gray-100 h-40 text-center w-full">
+      <p>No products found to be displayed</p>
+    </div>
+  {% endif%}
+  {% for product in products%}
+  <div class="rounded overflow-hidden shadow-lg hover:bg-gray-200">
+    <img src={{product.image}} class="mx-auto w-full h-40" loading="lazy">
+    <div class="">
+      <div class="flex justify-between mx-1">
+        <span class="inline-block rounded px-3 text-lg font-bold text-blue-600">{{product.name}}</span>
+        <span class="inline-block bg-gray-100 rounded-full px-3 text-sm font-semibold text-gray-700">{{product.price}}</span>
+      </div>
+      <span class="inline-block bg-gray-200 rounded px-2 py-1 text-sm font-light text-gray-700 h-20 overflow-auto w-full mt-1">{{product.description}}</span>
+      <div class="bg-green-400 text-lg text-white text-center p-1">{{product.phone_number}}</div>
+    </div>
+  </div>
+  {% endfor%}
+</div>
+
+{% endblock %}

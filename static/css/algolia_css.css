@@ -1,0 +1,11 @@
+.my-search-input{
+  border:none;
+  border-radius: 8px;
+  padding: 4px;
+  font-size: 14px;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+.ais-SearchBox-submit,.ais-SearchBox-resetIcon{
+  display: none;
+}

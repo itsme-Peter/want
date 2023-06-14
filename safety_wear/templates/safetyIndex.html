@@ -1,0 +1,41 @@
+{% extends 'safetyBase.html' %}
+{% load static %}
+
+{% block slider%}
+    <div id="default-carousel" class="bg-black w-full h-96 overflow-hidden bg-black bg-fixed  mx-auto rounded relative" data-carousel="slide">
+      <!-- Carousel wrapper -->
+      <div class="relative h-screen overflow-hidden rounded-lg">
+          <!-- Item 1 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img src="{% static 'images/do.jfif'%}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+          <!-- Item 2 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img src="{% static 'images/profile.png'%}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+          <!-- Item 3 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img src="{% static 'images/safety.jfif'%}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+      </div>
+      <!-- Slider indicators -->
+    </div>
+  {% endblock %}
+  {%block header%}
+  <div class="flex justify-between items-center text-lg mr-16 ml-24" id="header">
+    <div><p class=" z-60 my-2 px-2 ">Now trending</p></div>
+    <div><a href="/safety/products" class="-pt-10 font-semibold text-blue-600 hover:text-blue-400 underline">All Products</a></div>
+  </div>
+
+  {%endblock%}
+  {% block products%}
+    <div class="main_ grid grid-cols-4 gap-4 mb-5 py-5 px-3 bg-gray-100 z-70 rounded" id="parents">
+             {% comment %} products section  {% endcomment %}
+      <script>
+          window.addEventListener("DOMContentLoaded", function() {
+              rands();
+          });
+      </script>
+    </div>
+  {% endblock %}
+  

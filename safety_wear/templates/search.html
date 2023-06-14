@@ -1,0 +1,26 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Algolia Autocomplete</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js@1.8.2/dist/autocomplete.min.css" />
+    <link rel="stylesheet" href="{% static 'css/algolia_css.css'%}">
+  </head>
+
+  <body>
+   <div class="ais-InstantSearch">
+
+      <div class="right-panel">
+        <div id="searchbox" class="ais-SearchBox"></div>
+        <div id="hits"></div>
+      </div>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+    <script type="module" src="{% static 'js/algolia_.js'%}"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,237 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	{% block title%}
+    <title>Safety Wear Nairobi</title>
+	{% endblock %}
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static 'css/css.css'%}">
+    <link rel="stylesheet" href="{% static 'css/mediaQueries.css'%}">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+
+	</head>
+  <div id="phone" class="hidden">
+    <p>it works </p>
+  </div>
+
+  <body class="bg-gray-200 font-serif" id="top">
+    <div class="w-full h-7 bg-yellow-200 flex items-center justify-center">
+      <p>Located on this building. Call us on 0712345678.</p>
+    </div>
+
+    <div class="flex sticky top-0 font-serif z-40  w-full bg-white">
+      <div class="flex md:justify-around  bg-white w-full space-x-10 ">
+        <div class="flex space-x-14 -ml-16">
+          <div class="flex items-center" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="30" fill="currentColor" class="bi bi-blockquote-right" viewBox="0 0 16 16">
+            <path d="M2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm10.113-5.373a6.59 6.59 0 0 0-.445-.275l.21-.352c.122.074.272.17.452.287.18.117.35.26.51.428.156.164.289.351.398.562.11.207.164.438.164.692 0 .36-.072.65-.216.873-.145.219-.385.328-.721.328-.215 0-.383-.07-.504-.211a.697.697 0 0 1-.188-.463c0-.23.07-.404.211-.521.137-.121.326-.182.569-.182h.281a1.686 1.686 0 0 0-.123-.498 1.379 1.379 0 0 0-.252-.37 1.94 1.94 0 0 0-.346-.298zm-2.168 0A6.59 6.59 0 0 0 10 6.352L10.21 6c.122.074.272.17.452.287.18.117.35.26.51.428.156.164.289.351.398.562.11.207.164.438.164.692 0 .36-.072.65-.216.873-.145.219-.385.328-.721.328-.215 0-.383-.07-.504-.211a.697.697 0 0 1-.188-.463c0-.23.07-.404.211-.521.137-.121.327-.182.569-.182h.281a1.749 1.749 0 0 0-.117-.492 1.402 1.402 0 0 0-.258-.375 1.94 1.94 0 0 0-.346-.3z"/>
+            </svg>
+          </div>
+          <a href="/safety" class="header text-3xl font-bold text-blue-600 hover:text-blue-400">SafetyWear<br>Nairobi</a>
+        </div>
+        <div class="flex text-lg items-center space-x-4 relative">
+          <div><a href="/safety" class="no-underline" >Home</a></div>
+            {% block category%}
+            {% for category, values in category_name.items %}
+              <div class="relative dropdown">
+                <a href="/category/{{category}}" class="dropdown-toggle text-blue-500">{{ category }} Safety</a>
+                <div class="dropdown-content absolute">
+                  {% for value in values %}
+                    <a href="product/{{value}}" class="dropdown-item text-green-400 text-lg font-semibold">{{ value }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+            {% endblock%}
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-3  text-blue-600 w-40">
+          <div  class="flex items-center">
+            <button onclick="searches()" class="mr-2" id="searchButton"> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-search hover:text-blue-400" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button> 
+            <div class="">
+              <div id="searchbox" class="ais-SearchBox"></div>
+              <div id="hits" class="absolute"></div>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <div class="ml-10 mt-40 text-blue-600 absolute space-y-4 z-40">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-messenger" viewBox="0 0 16 16">
+            <path d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
+          </svg>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+          </svg>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center ml-5 hidden sticky " id="phone">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="30" fill="currentColor" class="bi bi-blockquote-right" viewBox="0 0 16 16">
+      <path d="M2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm10.113-5.373a6.59 6.59 0 0 0-.445-.275l.21-.352c.122.074.272.17.452.287.18.117.35.26.51.428.156.164.289.351.398.562.11.207.164.438.164.692 0 .36-.072.65-.216.873-.145.219-.385.328-.721.328-.215 0-.383-.07-.504-.211a.697.697 0 0 1-.188-.463c0-.23.07-.404.211-.521.137-.121.326-.182.569-.182h.281a1.686 1.686 0 0 0-.123-.498 1.379 1.379 0 0 0-.252-.37 1.94 1.94 0 0 0-.346-.298zm-2.168 0A6.59 6.59 0 0 0 10 6.352L10.21 6c.122.074.272.17.452.287.18.117.35.26.51.428.156.164.289.351.398.562.11.207.164.438.164.692 0 .36-.072.65-.216.873-.145.219-.385.328-.721.328-.215 0-.383-.07-.504-.211a.697.697 0 0 1-.188-.463c0-.23.07-.404.211-.521.137-.121.327-.182.569-.182h.281a1.749 1.749 0 0 0-.117-.492 1.402 1.402 0 0 0-.258-.375 1.94 1.94 0 0 0-.346-.3z"/>
+      </svg>
+    </div>
+    {% block slider%}
+    <div id="default-carousel" class="bg-black w-4/5 h-96 overflow-hidden bg-black bg-fixed mt-3 mx-auto rounded " data-carousel="slide">
+      <!-- Carousel wrapper -->
+      <div class="relative h-screen overflow-hidden rounded-lg">
+          <!-- Item 1 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img src="{% static 'images/do.jfif'%}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+          <!-- Item 2 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img src="{% static 'images/profile.png'%}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+          <!-- Item 3 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+              <img src="{% static 'images/safety.jfif'%}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+      </div>
+      <!-- Slider indicators -->
+    </div>
+
+    {% endblock %}
+    <p class="text-xl text-purple-600 mt-5 font-semibold ml-24">Browse Category</p>
+    <div class="flex mx-24 my-4 h-28 text-xl space-x-10 text-blue-600 bg-gray-100 rounded items-center justify-center">
+      <div class="justify-items-center items-center px-3 py-4 h-28 hover:bg-gray-200">
+        <img src="{% static 'icons/hat.png'%}" class="mx-auto h-10 ">
+        <a href="/safety/category/head">Head Safety</p>
+      </div>
+      <div class="justify-items-center items-center px-3 pt-4 h-28 hover:bg-gray-200">
+        <img src="{% static 'icons/body.svg'%}" class="h-10 mx-auto">
+        <a href="/safety/category/body">Body Safety</p>
+      </div>
+      <div class="justify-items-center items-center px-3 pt-4 h-28 hover:bg-gray-200">
+        <img src="{% static 'icons/foot.svg'%}" class="h-10 mx-auto">
+        <a href="/safety/category/foot">Foot Wear</p>
+      </div>
+      <div class="justify-items-center items-center px-3 pt-4 h-28 hover:bg-gray-200">
+        <img src="{% static 'icons/fire.svg'%}" class="h-10 mx-auto">
+        <a href="/safety/category/equipments">Equipments</p>
+      </div>
+      <div class="justify-items-center items-center px-3 pt-4 h-28 hover:bg-gray-200">
+        <img src="{% static 'icons/danger.svg'%}" class="h-10 mx-auto">
+        <a href="/safety/category/more">More Safety</p>
+      </div>
+    </div>
+
+    {%block header%}<div><p class="text-2xl ml-24 z-60 my-2 px-2 "> Now trending</p></div>{%endblock%}
+
+    {% block products%}
+    <div><a href="http://127.0.0.1:8000/safety/products" class="text-lg -pt-10 font-semibold text-blue-400 hover:text-blue-300 flex justify-end mr-20 underline">All Products</a></div>
+    <div class="grid grid-cols-4 gap-4 mb-5 py-5 px-5 bg-gray-100 z-70" id="parents">
+             {% comment %} products section  {% endcomment %}
+      <script>
+          window.addEventListener("DOMContentLoaded", function() {
+              rands();
+          });
+      </script>
+    </div>
+    {% endblock %}
+    <footer class="z-90 bg-gray-100 pt-3">
+      <div class="flex justify-between mx-10">
+          <div class="w-1/4 space-y-7">
+            <p class="text-2xl font-bold">SafetyWear<br>Nairobi</p>
+            <div class="space-y-3">
+              <p>Located at this building.</p>
+              <p>Its a shop that specialises in safety clothing and equipments</p>
+              <a href="" class="mt-6 text-yellow-600">About US </a>
+            </div>
+          </div>
+          <div class='w-1/5'>
+            <p class="font-semibold">Follow us on:<p> 
+            <div class="flex space-x-2 my-4 text-blue-600">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                </svg>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-messenger" viewBox="0 0 16 16">
+                  <path d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
+                </svg>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                </svg>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                  <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                </svg>
+              </div>
+            </div>    
+            <div class="mb-2">
+              <p>More products</p>
+              <a href="#" class="ml-2 mt-1 text-red-400">Iwant</a><br>
+              <a href="#" class="ml-2 mt-1 text-red-400">How to make money?</a>
+
+            </div>  
+            <div>
+              
+            </div>                   
+          </div>
+          <div>
+            <p class="font-semibold">Send feedback<p>
+            <div>
+              <form class="my-3" id="feedback-form">
+                <input type="text" name="email" placeholder="email" class="rounded w-full mb-3 caret-blue-600"><br>
+                <textarea type="text" name="message" placeholder="message" class="rounded w-full caret-blue-600"></textarea>
+                <input type="submit" class="btn btn-outline-primary " value="send"> 
+              </form>
+            </div>            
+          </div>
+          <div class="mr-10 font-semibold">
+            <p class="">CALL US <p>
+            <p class="my-3">0712345678</p>
+          </div>
+      </div>
+      <div class="h-7 bg-yellow-200 flex items-center justify-center mt-3">
+        <p> Located on this building . Call us on 0712345678</p>
+      </div>
+    </footer>
+    <div class="flex-row text-black text-center">
+      <p>SafetyWear Copyright @2023. All rights reserved</p>
+    </div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+
+
+    <script src="{% static 'js/safety.js'%}"></script>
+    <script src="{% static 'js/algolia_.js'%}"></script>
+    <script>
+    var staticUrl = "{% static '' %}";
+    </script>
+
+    </body>
+  
+  
+</html>

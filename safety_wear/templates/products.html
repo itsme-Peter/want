@@ -1,0 +1,36 @@
+{% extends "safetyIndex.html"%}
+{%block title%}<title>SafetyWear Products</title>{%endblock%}
+{%block slider%}{%endblock%}
+{%block header%}<div><p class="text-2xl ml-24 z-60 my-2 px-2 "> All Products</p></div>{%endblock%}
+
+{% block category%}
+  {% for category, values in category_name.items %}
+    <div class="relative dropdown">
+      <a href="/category/{{category}}" class="dropdown-toggle text-blue-500">{{ category }} Safety</a>
+      <div class="dropdown-content absolute">
+        {% for value in values %}
+          <a href="product/{{value}}" class="dropdown-item text-green-400 text-lg font-semibold">{{ value }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock%}
+
+
+{% block products%}
+
+<div class="grid grid-cols-4 gap-4 mb-5 pt-5 px-1 bg-gray-100" id="parents">
+    <script>
+    window.addEventListener("DOMContentLoaded", function() {
+        var url = "/safety/all"
+        allProducts(url);
+    });
+</script>
+
+</div>
+<div class="-mt-5 flex justify-center" id="pages">
+    
+</div>
+
+
+ {%endblock%}

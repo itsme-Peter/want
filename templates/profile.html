@@ -1,0 +1,307 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+	{% block title%}
+    <title>iwant It </title>
+	{% endblock %}
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/css.css'%}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'icons/favicon.png' %}"/>
+  </head>
+	<body class="font-serif">
+		<nav class="my-3 ">
+			<div class="flex justify-between px-5 bg-white">
+				<div><a href=""><img src="{% static 'images/logo.png'%}"class="h-24"></a></div>
+				<div class="flex items-center space-x-7 ">
+					<a href="/sign" class="btn btn-outline-info border-none  ml-10">Account</a>
+					<button onclick="feedback()" class="btn btn-primary btn-lg ml-6 my-2">Get in touch</button>
+				</div>
+			</div>
+			<div class="flex justify-end mr-10 -mt-5"><a href="" class="btn btn-outline-primary btn-lg w-64 sticky top-0 " data-bs-toggle="modal" data-bs-target="#orderModal">Place order</a></div>
+		</nav>
+        <div class="ml-10 -mt-3">   
+            <p class="text-3xl font-light my-1">My Details</p>
+        </div>
+        <div class="border-top flex ml-14">
+            <div class=" flex flex-col text-lg font-light no-underline space-y-3 mt-14 w-64 text-blue-600">
+                <button onclick="dash(1)" class="no-underline">My details</button>
+                <button onclick="dash(2)" class="no-underline">Orders</button>
+                <button onclick="dash(3)" class="no-underline">Messages</button>
+                <button onclick="dash(4)" class="no-underline">Verification</button>
+            </div>
+            
+            <div class="w-full" id="myDetails">
+                <div class="bg-gray-100 h-32 mr-5" style="border-top-left-radius:70px;">
+                    <p></p>
+                </div>
+                <div class="-mt-20 absolute ml-14  shadow-sm  rounded-full border">
+                    <img src="{% static 'images/profile.png'%}" class="h-32 rounded-full border">
+                </div>
+                <div class="mt-14 text-lg h-80 overflow-auto">
+                    <div class="flex border-bottom mt-3">
+                        <p class="font-semibold w-1/4">Username</p>
+                        <p class="flex items-center">
+                            <span class="mr-1">kimotojong</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </p>
+                    </div>
+                    <div class="flex border-bottom mt-3">
+                        <p class="font-semibold w-1/4">Email</p>
+                        <p class="flex items-center">
+                            <span class="mr-1">kimotojong@gmail.com</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </p>
+                    </div>
+
+                    <div class="flex border-bottom mt-3">
+                        <p class="font-semibold w-1/4">Account Type</p>
+                        <p class="flex items-center">
+                            <span class="mr-1">Supplier</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </p>
+                    </div>
+                    <div class="flex border-bottom mt-3">
+                        <p class="font-semibold w-1/4">Account Verification</p>
+                        <p class="flex items-center text-green-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                                <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+                            </svg>
+                        </p>
+                    </div>
+                    <div class="flex border-bottom mt-3">
+                        <p class="flex items-center ">
+                            <span class="mr-1">Change Password</span>
+                        </p>
+                    </div>
+                    <div class="flex border-bottom mt-3">
+                        <p class="flex items-center text-red-600 text-xl">
+                            <span class="mr-1">Delete Account</span>                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-l-2 overflow-hidden" id="orders">
+                <p class=" mt-10 text-xl ml-4">Orders completed</p>
+                <div class="flex items-center justify-around">
+                    <div>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Available Orders</option>
+                            <option value="1">Completed Orders</option>
+                        </select>
+                    </div>
+                    <div> 
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger">sort by </button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu text-lg">
+                                <li><a class="dropdown-item -my-1" href="#">Recent</a></li>
+                                <li><a class="dropdown-item -my-1" href="#">Latest</a></li>
+                                <li><a class="dropdown-item -my-1" href="#">All</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="text" placeholder="search" class="rounded-xl">
+                    </div>
+                    
+                </div>
+                <div class="h-screen overflow-auto mt-4">
+                    <div class="border flex items-center hover:bg-gray-100">
+                        <div class="ml-5 mt-2">
+                            <p>Completed</p>
+                            <input type="checkbox" class="ml-4 -mt-5 ring-2 ring-blue-500">
+                            <p class="mt-3 px-1 text-red-600 ">Custom</p>
+                            <button type="button" class="btn-success text-green-400 underline" data-bs-toggle="popover" title="By 16.12.23" >Deadline</button>
+
+                            <script>
+                                var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+                                var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                                return new bootstrap.Popover(popoverTriggerEl)
+                                })
+                            </script>
+
+                        </div>
+                        <div class="ml-10 w-3/4">
+                            <div>
+                                <a href="" class="no-underline"><p class="pt-4 text-xl">A reclinable chair</p></a>
+                                <p class="no-underline -mt-2">I want a chair with a reclined back and light weight for easier transport</p>
+                            </div>
+                            <div>
+                                <p class="border w-20 rounded px-1  ring-2 ring-blue-500">Category</p>
+                            </div>
+                            <div class="flex justify-end space-x-3 mr-14">
+                                <p class=" ring-2 ring-blue-500 rounded px-1">kimotojong</p>
+                                <p><b>15.12.23</b></p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="{% static 'images/profile.png'%}" class="h-20">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="flex px-1 space-x-3 overflow-hidden transition ease-in-out delay-150 duration-600 " id="messages">
+                <div class="w-2/5 bg-gray-100 rounded-xl">
+                    <div class="flex items-center mt-2 ml-3 border-b-2 pb-2">
+                        <div class="rounded-full">
+                            <img src="{% static 'icons/kaby2.png'%}" class="h-16 rounded-full">
+                        </div>
+                        <div class="-space-y-4  ml-3">
+                            <p class="text-lg font-semibold">Kimotojong</p>
+                            <p class="text-sm text-center">Supplier</p>
+                        </div>
+                        <div class=" -mt-5 ml-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="my-4 text-center ">
+                        <input type="text" class="rounded-xl h-8 w-5/6 border-none" placeholder="search">
+                    </div> 
+                    <div>
+                        <div role="button" class="flex items-center w-full px-2 py-2 hover:bg-gray-200">
+                            <div class="rounded-full w-32">
+                                <img src="{% static 'icons/kaby2.png'%}" class="rounded-full h-14  ">
+                            </div>
+                            <div class="-space-y-3 overflow-hidden ml-2">
+                                <div class="flex justify-between mr-3">
+                                    <p class="font-bold text-purple-600">kimotojong</p>
+                                    <p class="text-sm font-light">12.54pm</p>
+                                </div>
+                                <div class="flex mr-3">
+                                    <p class="font-light text-sm h-5 overflow-hidden">Hi, I am PMK and with my expertis I can be of great use to the organisation</p>
+                                    <button class="rounded-full hidden">
+                                        <span class="badge text-bg-primary rounded-full text-sm">4</span>
+                                    </button>
+                                    <div class="text-blue-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
+                                            <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>   
+                        <div role="button" class="flex items-center w-full px-2 py-2 hover:bg-gray-200">
+                            <div class="rounded-full w-32">
+                                <img src="{% static 'icons/kaby2.png'%}" class="rounded-full h-14  ">
+                            </div>
+                            <div class="-space-y-3 overflow-hidden ml-2">
+                                <div class="flex justify-between mr-3">
+                                    <p class="font-bold text-purple-600">kimotojong</p>
+                                    <p class="text-sm font-light">12.54pm</p>
+                                </div>
+                                <div class="flex mr-3">
+                                    <p class="font-light text-sm h-5 overflow-hidden">Hi, I am PMK and with my expertis I can be of great use to the organisation</p>
+                                    <button class="rounded-full">
+                                        <span class="badge text-bg-primary rounded-full text-sm">1</span>
+                                    </button>
+                                    <div class="text-blue-600 hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
+                                            <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>                        
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class="flex items-center mx-5 mt-3 border-b-2 pb-2">
+                        <div class="rounded-full">
+                            <img src="{% static 'icons/kaby2.png'%}" class="h-14 rounded-full">
+                        </div>
+                        <div class="-space-y-4 ml-3 ">
+                            <p class="font-2xl font-semibold">Kimotojong</p>
+                            <p class="text-sm text-center">Customer</p>
+                        </div>
+                    </div>
+                    <div class="h-96 autoflow-auto">
+                        <div class="flex items-center mx-2">
+                            <hr class="border-t-1 h-px w-2/4">today<hr class="border-t-1 h-px w-2/4">
+                        </div>
+                        <div class="flex mt-2 mx-3">
+                            <div class="rounded-full">
+                                <img src="{% static 'icons/kaby2.png'%}" class="rounded-full h-10">
+                            </div>
+                            <div class="">
+                                <div role="button" id="send-time">
+                                    <p class="p-1 bg-blue-600 text-white rounded-xl font-sm">Hey, hows the going?</p>
+                                    <p class="text-sm font-light -mt-4 hidden">12.54pm</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="flex mt-2 justify-end mx-3">
+                            <div class="-space-y-2">
+                                <div role="button" id="send-time">
+                                    <p class="p-1 bg-blue-600 text-white rounded-xl font-sm">Chilling with the big boys!!</p>
+                                    <p class="text-sm font-light -mt-4 hidden">12.57pm</p>
+
+                                </div>
+                                <div role="button" id="send-time">
+                                    <p class="p-1 bg-blue-600 text-white rounded-xl font-sm">How about u?</p>
+                                    <p class="text-sm font-light -mt-4 hidden">12.59pm</p>
+                                </div>
+                            </div>
+                            <div class="rounded-full">
+                                <img src="{% static 'icons/kaby2.png'%}" class="rounded-full h-10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mx-3">
+                        <hr class="border-t-1 h-px w-full ">
+                    </div>
+                    <div class="mx-5 my-3 flex items-center">
+                        <input type="text" class="w-full rounded-xl h-10 pr-10" placeholder="Write something">
+                        <button class="ml-2 flex-shrink-0 bg-blue-600 text-white rounded-xl h-10 px-3 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16 5a3 3 0 11-4.8-2.4l-.3.3V3a1 1 0 00-2 0v.9l-.3-.3A3 3 0 119 5h7zm-5 8a1 1 0 10-2 0v2a1 1 0 002 0v-2zm-6 0a1 1 0 112 0v2a1 1 0 01-2 0v-2zm8-8a1 1 0 10-2 0V8a1 1 0 002 0V5zm-4-3a1 1 0 00-1 1v3a1 1 0 002 0V3a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="ml-2">Send</span>
+                        </button>
+                        <button class="ml-2 flex-shrink-0 bg-gray-200 rounded-full h-10 w-10 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 5a3 3 0 013-3h8a3 3 0 013 3v8a3 3 0 01-3 3h-2.586a1 1 0 01-.707-.293l-1.414-1.414A1 1 0 008.586 12H5a1 1 0 01-1-1V5zm3-2a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://unpkg.com/@popperjs/core@2.10.3/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/js.js'%}"></script>
+
+    </body>
+</html>

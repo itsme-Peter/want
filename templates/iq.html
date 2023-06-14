@@ -1,0 +1,123 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IQ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css">
+  <style>
+    tr:nth-child(even) {
+        background-color: #ebf8ff;
+        }
+   </style>
+</head>
+<body>
+  {% if model == True%}
+    <div class="rounded-lg shadow-lg cover no-repeat" style="background-image: url('{% static 'images/candles.png'%}');height:16rem">  
+        <p> <p> 
+    </div>
+
+    <div class="flex items-center -mt-20 absolute space-x-44 px-5 text-blue-600">
+        <div class="ml-40 flex items-center">
+            <img src="{% static 'images/profile.png'%}" class="rounded-full h-36">
+            <div class="ml-5 -mt-7 text-xl font-semibold border bg-white rounded p-2">
+                <p>Username</p>
+            </div>
+        </div>
+        <div class="-mt-10 border bg-white rounded p-1 text-center w-36">
+            <p class="font-semibold text-xl">Real</p>
+            <p class="">12000</p>
+        </div>
+        <div class="flex justify-end mr-20 -mt-7 p-2">
+            <select placeholder="Choose Signals/Trades" class="border rounded-lg p-2">
+                <option value="real">Real</option>
+                <option value="practice">Practice</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="flex justify-center my-10 space-x-5">
+        <div>
+            <button class="h-10 p-2 bg-green-100 rounded-lg">Start/Stop</button>
+        </div>
+        <div>
+            <button class="h-10 p-2 bg-gray-200 rounded-lg">Reconnect</button>
+        </div>
+        <div>
+            <button class="h-10 p-2 bg-red-200 rounded-lg">Restart Model</button>
+        </div>
+    </div>
+
+    {% comment %} Tabs {% endcomment %}
+    <div class="flex justify-center space-x-20 m-5">
+        <div class="h-24 w-52 bg-gray-100 text-center p-3 text-lg font-semibold rounded-lg shadow-sm">
+            <h3>Today's Profit</h3>
+            <p class="text-green-500">+123</p>
+        </div>
+
+        <div class="h-24 w-52 bg-gray-100 text-center p-3 text-lg font-semibold rounded-lg shadow-sm">
+            <h3>Total Profit</h3>
+            <p class="text-green-500">+123</p>
+        </div>
+    </div>
+
+    <div class="flex justify-between mx-32 my-5">
+        <button class="h-10 px-2 border rounded-lg ">Refresh</button>
+        <select placeholder="Choose Signals/Trades" class="border rounded-lg p-2">
+            <option value="option1">Signals Sent</option>
+            <option value="option2">Trades Made</option>
+        </select>
+    </div>
+
+    <p class="text-lg font-semibold m-5">Trades Made/Signals:</p>
+
+    <table class="border-collapse text-center border border-slate-400 w-full rounded p-2">
+        <tr>
+            <th>Date</th>
+            <th>Signal</th>
+            <th>Amount</th>
+            <th>Result</th>
+        </tr>
+        <tr class="border-t ">
+            <td>15122023</td>
+            <td>Put</td>
+            <td>1</td>
+            <td>Profit 1.0</td>
+        </tr>
+        <tr  class="border-t ">
+            <td>15122023</td>
+            <td>Put</td>
+            <td>1</td>
+            <td>Profit 1.0</td>
+        </tr>
+    </table>
+
+  {% else %}
+    <div class="text-center m-5" id="content">
+        <div class="text-xl text-bold"> 
+            <p>Not Authorised!!!</p>
+            <P>Enter credential below<p>
+        </div>
+        <div>
+            <form class="space-y-3 mt-20 mb-3">
+                <input type="email" class="h-10 w-1/4 text-lg border p-1 rounded" placeholder="Email" name="email" required> <br>
+                <input type="password" class="h-10 w-1/4 text-lg border p-1 rounded" placeholder="Password" name="password" required><br>
+                <button type="submit" class="bg-green-400 p-1 text-lg rounded">Log In </button>
+            </form>
+        </div>
+        <button onclick="forgotPassw()" class="font-italic "><i>Forgot Password ?</i></button>
+    </div>
+    {%endif %}
+
+</body>
+
+
+<script>
+
+    function forgotPassw(){
+        alert("Fuck off please.....")
+    }
+
+</script>
+</html>

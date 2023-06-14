@@ -1,0 +1,44 @@
+@media only screen and (max-width: 700px) {
+    #top{
+        display: none;
+    }
+    #phone{
+        display: block;
+    }
+    #parents{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .phone{
+        display: block;
+    }
+  }
+
+
+  @media only screen and (max-width: 500px) {
+    #parents{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    #header{
+        margin: 5px;
+    }
+    #footer_div{
+        display: block;
+        text-align: center;
+    }
+    #footer_title{
+        width: 100%;
+        border-bottom: 1px solid black;
+        margin-bottom: 5px;
+    }
+    #social{
+        border-bottom: 1px solid black;
+        margin-bottom: 5px;
+    }
+    #call{
+        border-top: 1px solid black;
+        margin-top: 5px;
+    }
+
+  }
